@@ -50,18 +50,18 @@ Bestätigungs-E-Mails und einem vollständigen Admin-Panel.
    in den Editor und klicke **Run**. (Damit werden alle Tabellen + Beispieldaten angelegt.)
 6. Gehe zu **Project Settings → API**. Du brauchst gleich zwei Werte:
    - **Project URL** → das ist `NEXT_PUBLIC_SUPABASE_URL`
-sb_publishable_CmyT2jRZkW9UAzXnm0kXkg_YkOlKp90
    - **service_role** Secret (unter „Project API keys", auf „reveal" klicken)
      → das ist `SUPABASE_SERVICE_ROLE_KEY` ⚠️ **Geheim halten!**
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1xZHRiZmJtZ3V6bG1rbWJheHJtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MTUyNTA3MSwiZXhwIjoyMDk3MTAxMDcxfQ.9tTBSDLJiwqcjAst2JB0vQ_CczRUkik8xrROmlcgjQE
 
+> 🔐 **Wichtig:** Trage diese Werte NIEMALS in Dateien ein, die zu GitHub hochgeladen werden
+> (auch nicht in diese README!). Sie gehören ausschließlich in die Vercel
+> *Environment Variables* bzw. lokal in `.env.local` (diese Datei wird von Git ignoriert).
 
 
 ### Schritt 2 – E-Mails bei Resend einrichten
 
 1. Auf https://resend.com einloggen → **API Keys** → **Create API Key** → kopieren.
-   Das ist `RESEND_API_KEY`.
-re_5c9jTvZt_N2QLcR9NvLoqGk3bn561C4XK
+   Das ist `RESEND_API_KEY`. (Nur in Vercel/`.env.local` eintragen – nicht hier!)
 2. Zum Testen kannst du als Absender `onboarding@resend.dev` verwenden.
    Für echte E-Mails: unter **Domains** deine eigene Domain hinzufügen & verifizieren,
    dann z. B. `EMAIL_FROM="PlatinumPeptides <orders@deinedomain.de>"`.

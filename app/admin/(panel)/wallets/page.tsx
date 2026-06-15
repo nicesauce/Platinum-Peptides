@@ -50,7 +50,7 @@ export default function AdminWallets() {
     await fetch("/api/admin/wallets", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: w.id, ...w, ...patch }),
+      body: JSON.stringify({ ...w, ...patch }),
     });
   };
 
