@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLang, LanguageSwitcher } from "./LanguageProvider";
 import { useCart } from "./CartProvider";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const { t } = useLang();
@@ -20,10 +21,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-platinum-800/80 bg-platinum-950/80 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5">
-        <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-wide text-white">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-accent-400 to-accent-600 text-platinum-950 shadow-lg shadow-accent-500/30">P</span>
-          PLATINUM<span className="text-accent-400">PEPTIDES</span>
-        </Link>
+        <Logo size={34} />
 
         <div className="hidden items-center gap-7 md:flex">
           {links.map((l) => (

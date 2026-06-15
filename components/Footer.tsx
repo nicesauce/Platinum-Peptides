@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLang } from "./LanguageProvider";
+import { LogoMark } from "./Logo";
 
 export default function Footer() {
   const { t } = useLang();
@@ -11,7 +12,10 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex flex-col justify-between gap-6 md:flex-row">
           <div className="max-w-sm">
-            <div className="mb-2 text-lg font-bold text-white">PLATINUM<span className="text-accent-400">PEPTIDES</span></div>
+            <div className="mb-2 flex items-center gap-2.5 text-lg font-bold text-white">
+              <LogoMark size={28} />
+              PLATIN<span className="text-accent-400">PEPTIDES</span>
+            </div>
             <p className="text-sm text-platinum-400">{t("brand.tag")}</p>
           </div>
           <div className="flex gap-12 text-sm">
@@ -29,7 +33,7 @@ export default function Footer() {
         <div className="mt-8 rounded-xl border border-platinum-800 bg-platinum-900/40 p-4">
           <p className="text-xs leading-relaxed text-platinum-500">⚠️ {t("footer.disclaimer")}</p>
         </div>
-        <p className="mt-6 text-center text-xs text-platinum-600">© {new Date().getFullYear()} PlatinumPeptides. {t("footer.rights")}</p>
+        <p className="mt-6 text-center text-xs text-platinum-600">© {new Date().getFullYear()} PlatinPeptides. {t("footer.rights")}</p>
       </div>
     </footer>
   );

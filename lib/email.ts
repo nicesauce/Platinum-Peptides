@@ -104,7 +104,7 @@ export function buildOrderEmailHtml(order: Order, locale: Locale): string {
   <div style="background:#0d111c;padding:32px 0;font-family:Arial,Helvetica,sans-serif">
     <div style="max-width:560px;margin:0 auto;background:#141a28;border:1px solid #2a3147;border-radius:16px;overflow:hidden">
       <div style="background:linear-gradient(135deg,#0d9488,#1a1f2e);padding:24px 28px">
-        <h1 style="margin:0;color:#fff;font-size:20px;letter-spacing:1px">PLATINUM<span style="color:#5eead4">PEPTIDES</span></h1>
+        <h1 style="margin:0;color:#fff;font-size:20px;letter-spacing:1px">PLATIN<span style="color:#5eead4">PEPTIDES</span></h1>
       </div>
       <div style="padding:28px">
         <h2 style="color:#fff;margin:0 0 6px">${t.hello}</h2>
@@ -140,7 +140,7 @@ export function buildOrderEmailHtml(order: Order, locale: Locale): string {
 
 export async function sendOrderConfirmation(order: Order, locale: Locale) {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.EMAIL_FROM ?? "PlatinumPeptides <onboarding@resend.dev>";
+  const from = process.env.EMAIL_FROM ?? "PlatinPeptides <onboarding@resend.dev>";
   if (!apiKey) {
     console.warn("[email] RESEND_API_KEY not set – skipping confirmation email.");
     return { skipped: true };

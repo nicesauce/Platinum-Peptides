@@ -33,7 +33,7 @@ export default function AdminLogin() {
         <div className="mb-6 text-center">
           <div className="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-accent-400 to-accent-600 text-platinum-950 font-bold">P</div>
           <h1 className="text-xl font-bold text-white">Admin Login</h1>
-          <p className="mt-1 text-sm text-platinum-400">PlatinumPeptides Verwaltung</p>
+          <p className="mt-1 text-sm text-platinum-400">PlatinPeptides Verwaltung</p>
         </div>
         <input
           type="password"

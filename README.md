@@ -1,4 +1,4 @@
-# PlatinumPeptides 🧬
+# PlatinPeptides 🧬
 
 Eine moderne Forschungs-Peptide-Website mit animiertem Design, 4 Sprachen (DE/EN/ES/FR),
 Krypto-Zahlung, Bestell-Tracking per Transaktionsnummer, TXID-Einreichung,
@@ -43,7 +43,7 @@ Bestätigungs-E-Mails und einem vollständigen Admin-Panel.
 ### Schritt 1 – Datenbank bei Supabase einrichten
 
 1. Auf https://supabase.com einloggen → **New Project**.
-2. Name z. B. `platinumpeptides`, ein DB-Passwort vergeben, Region wählen → **Create**.
+2. Name z. B. `platinpeptides`, ein DB-Passwort vergeben, Region wählen → **Create**.
 3. Warte ~1 Minute, bis das Projekt bereit ist.
 4. Links im Menü auf **SQL Editor** → **New query**.
 5. Öffne die Datei **`supabase-schema.sql`** aus diesem Projekt, kopiere den **gesamten Inhalt**
@@ -64,12 +64,12 @@ Bestätigungs-E-Mails und einem vollständigen Admin-Panel.
    Das ist `RESEND_API_KEY`. (Nur in Vercel/`.env.local` eintragen – nicht hier!)
 2. Zum Testen kannst du als Absender `onboarding@resend.dev` verwenden.
    Für echte E-Mails: unter **Domains** deine eigene Domain hinzufügen & verifizieren,
-   dann z. B. `EMAIL_FROM="PlatinumPeptides <orders@deinedomain.de>"`.
+   dann z. B. `EMAIL_FROM="PlatinPeptides <orders@deinedomain.de>"`.
 
 ### Schritt 3 – Projektdateien zu GitHub hochladen
 
 **Variante A (einfach, über die Website):**
-1. Auf https://github.com → **New repository** → Name z. B. `platinumpeptides` → **Create**.
+1. Auf https://github.com → **New repository** → Name z. B. `platinpeptides` → **Create**.
 2. Auf der nächsten Seite **„uploading an existing file"** klicken und **alle Dateien
    und Ordner** dieses Projekts hineinziehen → **Commit changes**.
 
@@ -78,16 +78,16 @@ Bestätigungs-E-Mails und einem vollständigen Admin-Panel.
 cd "Claude Peptide Website"
 git init
 git add .
-git commit -m "PlatinumPeptides"
+git commit -m "PlatinPeptides"
 git branch -M main
-git remote add origin https://github.com/DEIN-NAME/platinumpeptides.git
+git remote add origin https://github.com/DEIN-NAME/platinpeptides.git
 git push -u origin main
 ```
 
 ### Schritt 4 – Auf Vercel deployen
 
 1. Auf https://vercel.com → **Add New… → Project**.
-2. Dein GitHub-Repo `platinumpeptides` **importieren**.
+2. Dein GitHub-Repo `platinpeptides` **importieren**.
 3. Vercel erkennt Next.js automatisch – nichts ändern.
 4. Klappe **„Environment Variables"** auf und trage diese Schlüssel ein
    (Werte aus Schritt 1 & 2). Siehe auch `.env.example`:
@@ -97,7 +97,7 @@ git push -u origin main
    | `NEXT_PUBLIC_SUPABASE_URL` | deine Supabase Project URL |
    | `SUPABASE_SERVICE_ROLE_KEY` | dein Supabase service_role Key |
    | `RESEND_API_KEY` | dein Resend API Key |
-   | `EMAIL_FROM` | z. B. `PlatinumPeptides <onboarding@resend.dev>` |
+   | `EMAIL_FROM` | z. B. `PlatinPeptides <onboarding@resend.dev>` |
    | `ADMIN_PASSWORD` | dein gewünschtes Admin-Passwort |
    | `ADMIN_SECRET` | langer Zufallsstring (z. B. `openssl rand -hex 32`) |
    | `NEXT_PUBLIC_SITE_URL` | `https://dein-projekt.vercel.app` |

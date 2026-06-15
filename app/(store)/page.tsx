@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLang } from "@/components/LanguageProvider";
 import ProductCard from "@/components/ProductCard";
+import CryptoBanner from "@/components/CryptoBanner";
 import type { Product } from "@/lib/types";
 
 export default function HomePage() {
@@ -86,6 +87,9 @@ export default function HomePage() {
           </motion.div>
         ))}
       </section>
+
+      {/* CRYPTO BANNER */}
+      <CryptoBanner />
 
       {/* SHIPPING BANNER */}
       <section className="my-8 overflow-hidden rounded-2xl border border-accent-600/30 bg-gradient-to-r from-accent-600/15 to-transparent p-6">

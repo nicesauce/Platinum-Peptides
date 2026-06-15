@@ -6,7 +6,7 @@ import Providers from "@/components/Providers";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "PlatinumPeptides – Premium Research Peptides",
+  title: "PlatinPeptides – Premium Research Peptides",
   description:
     "Premium research peptides. Lab tested, purity ≥ 99%. Anonymous crypto payment, fast 1–2 day shipping.",
 };

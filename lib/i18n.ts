@@ -13,6 +13,7 @@ export const DEFAULT_LOCALE: Locale = "de";
 export const dict: Record<Locale, Record<string, string>> = {
   de: {
     "brand.tag": "Forschungspeptide in Premiumqualität",
+    "pay.accept": "Wir akzeptieren",
     "nav.home": "Start",
     "nav.products": "Produkte",
     "nav.track": "Bestellung verfolgen",
@@ -110,6 +111,7 @@ export const dict: Record<Locale, Record<string, string>> = {
   },
   en: {
     "brand.tag": "Premium-grade research peptides",
+    "pay.accept": "We accept",
     "nav.home": "Home",
     "nav.products": "Products",
     "nav.track": "Track order",
@@ -117,7 +119,7 @@ export const dict: Record<Locale, Record<string, string>> = {
     "nav.cart": "Cart",
 
     "hero.badge": "Lab tested · Purity ≥ 99%",
-    "hero.title": "Platinum-grade research peptides",
+    "hero.title": "Premium-grade research peptides",
     "hero.subtitle": "Premium peptides for scientific research. Anonymous crypto payment, discreet shipping usually within 1–2 days.",
     "hero.cta": "Browse products",
     "hero.cta2": "Track order",
@@ -207,6 +209,7 @@ export const dict: Record<Locale, Record<string, string>> = {
   },
   es: {
     "brand.tag": "Péptidos de investigación de primera calidad",
+    "pay.accept": "Aceptamos",
     "nav.home": "Inicio",
     "nav.products": "Productos",
     "nav.track": "Seguir pedido",
@@ -304,6 +307,7 @@ export const dict: Record<Locale, Record<string, string>> = {
   },
   fr: {
     "brand.tag": "Peptides de recherche haut de gamme",
+    "pay.accept": "Nous acceptons",
     "nav.home": "Accueil",
     "nav.products": "Produits",
     "nav.track": "Suivre la commande",

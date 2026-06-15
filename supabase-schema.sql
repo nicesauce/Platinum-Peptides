@@ -1,5 +1,5 @@
 -- ============================================================
---  PlatinumPeptides – Database Schema
+--  PlatinPeptides – Database Schema
 --  Run this whole file in:  Supabase → SQL Editor → New query → Run
 -- ============================================================
 

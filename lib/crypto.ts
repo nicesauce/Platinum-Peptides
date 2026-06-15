@@ -29,6 +29,24 @@ export function getCoin(symbol: string): Coin | undefined {
   return COINS.find((c) => c.symbol.toUpperCase() === symbol.toUpperCase());
 }
 
+// Brand colours used for the coin badges in the crypto banner.
+export const COIN_COLORS: Record<string, string> = {
+  BTC: "#f7931a",
+  XMR: "#ff6600",
+  USDT: "#26a17b",
+  USDC: "#2775ca",
+  ETH: "#627eea",
+  SOL: "#14f195",
+  LTC: "#345d9d",
+  BCH: "#0ac18e",
+  DOGE: "#c2a633",
+  TRX: "#ff060a",
+  XRP: "#23292f",
+  BNB: "#f3ba2f",
+  ADA: "#0033ad",
+  DAI: "#f5ac37",
+};
+
 /**
  * Fetch the live crypto amount for a given EUR total.
  * Uses CoinGecko's free API. Returns a formatted string, or null if
