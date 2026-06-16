@@ -159,7 +159,19 @@ export default function OrderPage() {
             </div>
           ))}
         </div>
-        <div className="mt-4 flex justify-between border-t border-platinum-800 pt-4 font-bold text-white">
+        {order.subtotal > order.total && (
+          <div className="mt-4 flex justify-between border-t border-platinum-800 pt-4 text-sm text-platinum-300">
+            <span>{t("cart.subtotal")}</span>
+            <span>€{order.subtotal.toFixed(2)}</span>
+          </div>
+        )}
+        {order.subtotal > order.total && (
+          <div className="mt-1 flex justify-between text-sm text-accent-400">
+            <span>{t("cart.discount")}</span>
+            <span>−€{(order.subtotal - order.total).toFixed(2)}</span>
+          </div>
+        )}
+        <div className={`flex justify-between font-bold text-white ${order.subtotal > order.total ? "mt-2 pt-2" : "mt-4 border-t border-platinum-800 pt-4"}`}>
           <span>{t("cart.total")}</span>
           <span>€{order.total.toFixed(2)}</span>
         </div>

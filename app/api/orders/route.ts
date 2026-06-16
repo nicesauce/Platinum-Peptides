@@ -3,6 +3,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 import { generateOrderNumber } from "@/lib/orders";
 import { eurToCrypto, getCoin } from "@/lib/crypto";
 import { sendOrderConfirmation } from "@/lib/email";
+import { computeTotals } from "@/lib/pricing";
 import type { Order, OrderItem } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -28,12 +29,10 @@ export async function POST(req: NextRequest) {
     }
 
     const orderItems: OrderItem[] = [];
-    let subtotal = 0;
     for (const i of items) {
       const v: any = variants.find((x: any) => x.id === i.variant_id);
       if (!v) continue;
       const qty = Math.max(1, Math.min(999, parseInt(i.qty, 10) || 1));
-      subtotal += v.price * qty;
       orderItems.push({
         product_id: v.product_id,
         product_name: v.products?.name ?? "Product",
@@ -46,7 +45,8 @@ export async function POST(req: NextRequest) {
     if (orderItems.length === 0) {
       return NextResponse.json({ error: "Invalid items." }, { status: 400 });
     }
-    const total = subtotal;
+    // Apply the bulk discount (20% from 3 items) server-side.
+    const { subtotal, total } = computeTotals(orderItems);
 
     // 2. Pick an active wallet for the chosen coin
     const { data: wallet } = await supabaseAdmin

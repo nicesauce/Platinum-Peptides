@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import type { Product } from "@/lib/types";
 import { useCart } from "./CartProvider";
 import { useLang } from "./LanguageProvider";
+import CryptoPrice from "./CryptoPrice";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { t } = useLang();
@@ -72,9 +73,12 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
 
         <div className="flex items-center justify-between">
-          <div className="text-lg font-bold text-white">
-            <span className="text-xs font-normal text-platinum-500">{variants.length > 1 ? "" : t("products.from")} </span>
-            €{(variant?.price ?? minPrice).toFixed(2)}
+          <div>
+            <div className="text-lg font-bold text-white">
+              <span className="text-xs font-normal text-platinum-500">{variants.length > 1 ? "" : t("products.from")} </span>
+              €{(variant?.price ?? minPrice).toFixed(2)}
+            </div>
+            <CryptoPrice eur={variant?.price ?? minPrice} />
           </div>
           <button
             onClick={onAdd}

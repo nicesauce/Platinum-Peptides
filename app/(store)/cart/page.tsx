@@ -6,7 +6,7 @@ import { useLang } from "@/components/LanguageProvider";
 
 export default function CartPage() {
   const { t } = useLang();
-  const { lines, setQty, remove, subtotal } = useCart();
+  const { lines, setQty, remove, subtotal, discount, total, eligible, count } = useCart();
 
   if (lines.length === 0) {
     return (
@@ -49,9 +49,20 @@ export default function CartPage() {
             <span>{t("cart.subtotal")}</span>
             <span>€{subtotal.toFixed(2)}</span>
           </div>
+          {discount > 0 && (
+            <div className="mt-2 flex justify-between text-accent-400">
+              <span>{t("cart.discount")}</span>
+              <span>−€{discount.toFixed(2)}</span>
+            </div>
+          )}
+          {!eligible && count > 0 && (
+            <p className="mt-3 rounded-lg bg-accent-500/10 p-2.5 text-center text-xs text-accent-400">
+              {t("cart.bulkhint").replace("{n}", String(3 - count))}
+            </p>
+          )}
           <div className="mt-4 flex justify-between border-t border-platinum-800 pt-4 text-lg font-bold text-white">
             <span>{t("cart.total")}</span>
-            <span>€{subtotal.toFixed(2)}</span>
+            <span>€{total.toFixed(2)}</span>
           </div>
           <Link href="/checkout" className="mt-6 block rounded-xl bg-accent-500 py-3 text-center font-semibold text-platinum-950 hover:bg-accent-400">
             {t("cart.checkout")}

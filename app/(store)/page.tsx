@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useLang } from "@/components/LanguageProvider";
 import ProductCard from "@/components/ProductCard";
 import CryptoBanner from "@/components/CryptoBanner";
+import Testimonials from "@/components/Testimonials";
 import type { Product } from "@/lib/types";
 
 export default function HomePage() {
@@ -92,20 +93,56 @@ export default function HomePage() {
       <CryptoBanner />
 
       {/* SHIPPING BANNER */}
-      <section className="my-8 overflow-hidden rounded-2xl border border-accent-600/30 bg-gradient-to-r from-accent-600/15 to-transparent p-6">
-        <div className="flex items-center gap-4">
-          <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-accent-500/20 text-accent-400">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="3" width="15" height="13" /><path d="M16 8h4l3 3v5h-7V8zM5.5 18.5A1.5 1.5 0 1 0 5.5 21M18.5 18.5A1.5 1.5 0 1 0 18.5 21" /></svg>
+      <section className="my-8 grid gap-4 md:grid-cols-2">
+        {/* Free shipping */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="shimmer relative overflow-hidden rounded-2xl border border-accent-500/40 bg-gradient-to-br from-accent-600/25 to-platinum-900 p-6"
+        >
+          <div className="flex items-center gap-4">
+            <div className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-accent-500/25 text-accent-300">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="1" y="3" width="15" height="13" /><path d="M16 8h4l3 3v5h-7V8zM5.5 18.5A1.5 1.5 0 1 0 5.5 21M18.5 18.5A1.5 1.5 0 1 0 18.5 21" /></svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-extrabold text-white">{t("promo.freeship")} 🚚</h3>
+              <p className="mt-1 text-sm text-platinum-200">{t("promo.freeshipDesc")}</p>
+            </div>
           </div>
-          <p className="text-platinum-100">{t("feat.ship.d")}</p>
-        </div>
+        </motion.div>
+
+        {/* 20% bulk discount */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.08 }}
+          className="relative overflow-hidden rounded-2xl border border-amber-400/40 bg-gradient-to-br from-amber-500/20 to-platinum-900 p-6"
+        >
+          <span className="absolute right-4 top-4 rounded-full bg-amber-400 px-3 py-1 text-sm font-extrabold text-platinum-950">{t("promo.bulkBadge")}</span>
+          <div className="flex items-center gap-4">
+            <div className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-amber-400/20 text-amber-300">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4M4 6v12a2 2 0 0 0 2 2h14v-4M18 12a2 2 0 0 0 0 4h4v-4z" /></svg>
+            </div>
+            <div className="pr-16">
+              <h3 className="text-xl font-extrabold text-white">{t("promo.bulkTitle")}</h3>
+              <p className="mt-1 text-sm text-platinum-200">{t("promo.bulkDesc")}</p>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
-      {/* PRODUCTS */}
+      {/* BESTSELLERS */}
       <section className="py-8">
         <div className="mb-6 flex items-end justify-between">
-          <h2 className="text-2xl font-bold text-white md:text-3xl">{t("products.title")}</h2>
-          <Link href="/products" className="text-sm text-accent-400 hover:underline">{t("hero.cta")} →</Link>
+          <div>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-400/15 px-3 py-1 text-xs font-semibold text-amber-300">
+              🔥 {t("products.popularNote")}
+            </span>
+            <h2 className="mt-2 text-2xl font-bold text-white md:text-3xl">{t("products.bestseller")}</h2>
+          </div>
+          <Link href="/products" className="shrink-0 text-sm text-accent-400 hover:underline">{t("hero.cta")} →</Link>
         </div>
         {products.length === 0 ? (
           <p className="text-platinum-500">{t("common.loading")}</p>
@@ -117,6 +154,9 @@ export default function HomePage() {
           </div>
         )}
       </section>
+
+      {/* REVIEWS */}
+      <Testimonials />
     </div>
   );
 }

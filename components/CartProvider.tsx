@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { computeTotals } from "@/lib/pricing";
 
 export type CartLine = {
   product_id: string;
@@ -19,6 +20,9 @@ type Ctx = {
   clear: () => void;
   count: number;
   subtotal: number;
+  discount: number;
+  total: number;
+  eligible: boolean;
 };
 
 const CartContext = createContext<Ctx>({
@@ -29,6 +33,9 @@ const CartContext = createContext<Ctx>({
   clear: () => {},
   count: 0,
   subtotal: 0,
+  discount: 0,
+  total: 0,
+  eligible: false,
 });
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
@@ -72,10 +79,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const clear = () => setLines([]);
 
   const count = lines.reduce((s, l) => s + l.qty, 0);
-  const subtotal = lines.reduce((s, l) => s + l.qty * l.price, 0);
+  const { subtotal, discount, total, eligible } = computeTotals(lines);
 
   return (
-    <CartContext.Provider value={{ lines, add, remove, setQty, clear, count, subtotal }}>
+    <CartContext.Provider value={{ lines, add, remove, setQty, clear, count, subtotal, discount, total, eligible }}>
       {children}
     </CartContext.Provider>
   );

@@ -22,6 +22,9 @@ const T: Record<Locale, Record<string, string>> = {
     shipping: "Versand dauert in der Regel 1–2 Werktage nach Zahlungseingang.",
     research: "Nur zu Forschungszwecken. Nicht für den menschlichen Verzehr.",
     qty: "Menge",
+    subtotal: "Zwischensumme",
+    discount: "Mengenrabatt (−20%)",
+    freeship: "Versand (kostenlos)",
   },
   en: {
     subject: "Order confirmation",
@@ -39,6 +42,9 @@ const T: Record<Locale, Record<string, string>> = {
     shipping: "Shipping usually takes 1–2 business days after payment is received.",
     research: "For research purposes only. Not for human consumption.",
     qty: "Qty",
+    subtotal: "Subtotal",
+    discount: "Bulk discount (−20%)",
+    freeship: "Shipping (free)",
   },
   es: {
     subject: "Confirmación de pedido",
@@ -56,6 +62,9 @@ const T: Record<Locale, Record<string, string>> = {
     shipping: "El envío suele tardar 1–2 días hábiles tras recibir el pago.",
     research: "Solo para fines de investigación. No apto para consumo humano.",
     qty: "Cant.",
+    subtotal: "Subtotal",
+    discount: "Descuento por volumen (−20%)",
+    freeship: "Envío (gratis)",
   },
   fr: {
     subject: "Confirmation de commande",
@@ -73,6 +82,9 @@ const T: Record<Locale, Record<string, string>> = {
     shipping: "La livraison prend généralement 1 à 2 jours ouvrés après réception du paiement.",
     research: "À des fins de recherche uniquement. Ne convient pas à la consommation humaine.",
     qty: "Qté",
+    subtotal: "Sous-total",
+    discount: "Remise quantité (−20%)",
+    freeship: "Livraison (gratuite)",
   },
 };
 
@@ -125,6 +137,19 @@ export function buildOrderEmailHtml(order: Order, locale: Locale): string {
 
         <h3 style="color:#fff;margin:16px 0 8px">${t.items}</h3>
         <table style="width:100%;border-collapse:collapse">${rows}
+          ${order.subtotal > order.total ? `
+          <tr>
+            <td colspan="2" style="padding:8px 0;color:#94a3b8">${t.subtotal}</td>
+            <td style="padding:8px 0;color:#94a3b8;text-align:right">${money(order.subtotal)}</td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding:4px 0;color:#5eead4">${t.discount}</td>
+            <td style="padding:4px 0;color:#5eead4;text-align:right">−${money(order.subtotal - order.total)}</td>
+          </tr>` : ""}
+          <tr>
+            <td colspan="2" style="padding:4px 0;color:#94a3b8">${t.freeship}</td>
+            <td style="padding:4px 0;color:#94a3b8;text-align:right">€0.00</td>
+          </tr>
           <tr>
             <td colspan="2" style="padding:12px 0;color:#fff;font-weight:bold">${t.total}</td>
             <td style="padding:12px 0;color:#5eead4;font-weight:bold;text-align:right">${money(order.total)}</td>

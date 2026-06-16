@@ -2,11 +2,14 @@
 
 import { LanguageProvider } from "./LanguageProvider";
 import { CartProvider } from "./CartProvider";
+import { RatesProvider } from "./RatesProvider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <LanguageProvider>
-      <CartProvider>{children}</CartProvider>
+      <RatesProvider>
+        <CartProvider>{children}</CartProvider>
+      </RatesProvider>
     </LanguageProvider>
   );
 }

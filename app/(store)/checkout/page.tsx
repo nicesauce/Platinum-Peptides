@@ -10,7 +10,7 @@ type CoinOpt = { coin: string; network: string };
 
 export default function CheckoutPage() {
   const { t, locale } = useLang();
-  const { lines, subtotal, clear } = useCart();
+  const { lines, subtotal, discount, total, clear } = useCart();
   const router = useRouter();
 
   const [coins, setCoins] = useState<CoinOpt[]>([]);
@@ -155,9 +155,19 @@ export default function CheckoutPage() {
               </div>
             ))}
           </div>
-          <div className="mt-4 flex justify-between border-t border-platinum-800 pt-4 text-lg font-bold text-white">
+          {discount > 0 && (
+            <div className="mt-2 flex justify-between text-sm text-accent-400">
+              <span>{t("cart.discount")}</span>
+              <span>−€{discount.toFixed(2)}</span>
+            </div>
+          )}
+          <div className="mt-2 flex justify-between text-sm text-platinum-400">
+            <span>{t("promo.freeship")}</span>
+            <span>€0.00</span>
+          </div>
+          <div className="mt-3 flex justify-between border-t border-platinum-800 pt-3 text-lg font-bold text-white">
             <span>{t("cart.total")}</span>
-            <span>€{subtotal.toFixed(2)}</span>
+            <span>€{total.toFixed(2)}</span>
           </div>
 
           <label className="mt-5 flex cursor-pointer items-start gap-2 text-xs text-platinum-400">
