@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import ImageUpload from "@/components/ImageUpload";
 
 type VariantForm = { label: string; price: string; stock: string };
 type ProductForm = {
@@ -108,8 +109,12 @@ export default function AdminProducts() {
             <input className={input} placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
             <input className={input} placeholder="Kategorie" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} />
             <input className={input} placeholder="Reinheit (z. B. >= 99%)" value={form.purity} onChange={(e) => setForm({ ...form, purity: e.target.value })} />
-            <input className={input} placeholder="Bild-URL (optional)" value={form.image_url} onChange={(e) => setForm({ ...form, image_url: e.target.value })} />
             <textarea className={`${input} sm:col-span-2`} rows={2} placeholder="Beschreibung" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+          </div>
+
+          <div className="mt-4">
+            <h3 className="mb-2 text-sm font-semibold text-platinum-300">Produktbild</h3>
+            <ImageUpload value={form.image_url} onChange={(url) => setForm({ ...form, image_url: url })} />
           </div>
 
           <div className="mt-4">

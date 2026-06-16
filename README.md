@@ -58,6 +58,17 @@ Bestätigungs-E-Mails und einem vollständigen Admin-Panel.
 > *Environment Variables* bzw. lokal in `.env.local` (diese Datei wird von Git ignoriert).
 
 
+> 🖼️ **Bild-Upload:** Das Schema legt automatisch einen öffentlichen Storage-Bucket
+> `product-images` an. Damit kannst du im Admin-Panel Produktbilder per Drag & Drop
+> hochladen. Falls du das Schema schon **vor** diesem Update ausgeführt hast, führe
+> einfach diesen einen Befehl im SQL-Editor nach:
+> ```sql
+> insert into storage.buckets (id, name, public)
+> values ('product-images', 'product-images', true)
+> on conflict (id) do update set public = true;
+> ```
+> (Alternativ in Supabase → **Storage** → **New bucket** → Name `product-images` → **Public** aktivieren.)
+
 ### Schritt 2 – E-Mails bei Resend einrichten
 
 1. Auf https://resend.com einloggen → **API Keys** → **Create API Key** → kopieren.

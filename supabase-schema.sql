@@ -130,3 +130,11 @@ insert into wallets (coin, network, address, active) values
   ('SOL',  'Solana',         'REPLACE_WITH_YOUR_SOL_ADDRESS',  true),
   ('LTC',  'Litecoin',       'REPLACE_WITH_YOUR_LTC_ADDRESS',  true)
 on conflict do nothing;
+
+-- ============================================================
+--  STORAGE: bucket for product images (used by the admin upload).
+--  Creates a PUBLIC bucket so uploaded images are viewable on the shop.
+-- ============================================================
+insert into storage.buckets (id, name, public)
+values ('product-images', 'product-images', true)
+on conflict (id) do update set public = true;

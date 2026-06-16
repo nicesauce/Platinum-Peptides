@@ -6,7 +6,7 @@ import { LogoMark } from "./Logo";
 
 export default function Footer() {
   const { t } = useLang();
-  const support = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@yourdomain.com";
+  const support = process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "support@platinpeptides.com";
   return (
     <footer className="mt-24 border-t border-platinum-800 bg-platinum-950">
       <div className="mx-auto max-w-6xl px-4 py-10">
